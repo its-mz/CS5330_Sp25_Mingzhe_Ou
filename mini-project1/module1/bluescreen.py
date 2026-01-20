@@ -12,7 +12,7 @@ from simpleimage import SimpleImage
 from PIL import Image
 
 
-INTENSITY_THRESHOLD = 1.4
+INTENSITY_THRESHOLD = 1.2
 
 
 def bluescreen(main_filename, back_filename):
