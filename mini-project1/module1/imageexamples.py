@@ -101,6 +101,7 @@ def main():
 
     grayscale_flower_avg = grayscale('images/flower.png')
     grayscale_flower_avg.show()
+    grayscale_flower_avg.pil_image.save('images/flower_grayscale.png')
 
 
 if __name__ == '__main__':

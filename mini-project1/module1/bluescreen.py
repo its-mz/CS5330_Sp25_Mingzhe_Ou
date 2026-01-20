@@ -9,9 +9,10 @@ pixels of a certain color intensity in a particular channel
 
 
 from simpleimage import SimpleImage
+from PIL import Image
 
 
-INTENSITY_THRESHOLD = 1.6
+INTENSITY_THRESHOLD = 1.4
 
 
 def bluescreen(main_filename, back_filename):
@@ -30,7 +31,14 @@ def bluescreen(main_filename, back_filename):
     # back image and overwrite the pixel in
     # the main image with that from the back image.
     # Add your code hear
-    pass
+    for pixel in image:
+        average = (pixel.red + pixel.green + pixel.blue) / 3
+        if pixel.blue >= average * INTENSITY_THRESHOLD:
+            back_pixel = back.get_pixel(pixel.x, pixel.y)
+            pixel.red = back_pixel.red
+            pixel.green = back_pixel.green
+            pixel.blue = back_pixel.blue
+
     return image
 
 
@@ -40,15 +48,23 @@ def main():
     You should store the return value (image) and then
     call .show() to visualize the output of your program.
     """
-    original_stop = SimpleImage('images/stop.png')
-    original_stop.show()
+    cat = Image.open('images/blue.png')
+    cat_resized = cat.resize((1200, 1500))
+    cat_resized.save('images/cat_blue.png')
+    
+    bg = Image.open('images/background.png') 
+    bg_resized = bg.resize((1200, 1500))
+    bg_resized.save('images/background_small.png')
+    
+    original_cat = SimpleImage('images/cat_blue.png')
+    original_cat.show()
 
-    original_leaves = SimpleImage('images/leaves.png')
-    original_leaves.show()
+    original_bg = SimpleImage('images/background_small.png')
+    original_bg.show()
 
-    stop_leaves_replaced = redscreen('images/stop.png', 'images/leaves.png')
-    stop_leaves_replaced.show()
-
+    cat_bg_replaced = bluescreen('images/cat_blue.png', 'images/background_small.png')
+    cat_bg_replaced.show()
+    cat_bg_replaced.pil_image.save('images/cat_with_new_background.png')
 
 if __name__ == '__main__':
     main()
