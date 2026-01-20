@@ -84,28 +84,23 @@ def main():
     You should store the return value (image) and then
     call .show() to visualize the output of your program.
     """
-    #flower = SimpleImage('images/flower.png')
-    #flower.show()
+    flower = SimpleImage('images/flower.png')
+    flower.show()
 
-    #darker(flower)
-    #flower.show()
-
-
-    #red_flower = red_channel('images/flower.png')
-    #red_flower.show()
+    # darker(flower)
+    # flower.show()
 
 
-    #right_half_darker_flower = right_half_darker('images/flower.png')
-    #right_half_darker_flower.show()
+    # red_flower = red_channel('images/flower.png')
+    # red_flower.show()
 
 
-    # grayscale_flower_avg = grayscale('images/flower.png')
-    # grayscale_flower_avg.show()
-    
-    
-    boy = SimpleImage('data/images/boy.jpg')
-    grayscale_boy_avg = grayscale('data/images/boy.jpg')
-    grayscale_boy_avg.show()
+    # right_half_darker_flower = right_half_darker('images/flower.png')
+    # right_half_darker_flower.show()
+
+
+    grayscale_flower_avg = grayscale('images/flower.png')
+    grayscale_flower_avg.show()
 
 
 if __name__ == '__main__':
